@@ -28,11 +28,11 @@ alias .....="cd ../../../.."
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
 alias dc="cd ~/Documents"
-alias p="projetos"
 alias home="cd ~"
 
 # HELPFUL TERMINAL ALIASES
 alias c="clear"
+alias ls="ls -G"
 
 # GIT
 alias g="git"
@@ -42,4 +42,4 @@ alias gd="git diff"
 alias gb="git branch"
 alias gm="git checkout master"
 alias gl="git pull"
-alist gc="git commit -m"  
+alias gc="git commit -m"  
