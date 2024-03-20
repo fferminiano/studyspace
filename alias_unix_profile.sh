@@ -32,7 +32,8 @@ alias home="cd ~"
 
 # HELPFUL TERMINAL ALIASES
 alias c="clear"
-alias ls="ls -G"
+alias ls="ls -G" #MAC OSX
+alias ls="ls --color=auto"
 
 # GIT
 alias g="git"
