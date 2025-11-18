@@ -1,0 +1,28 @@
+# Use the official MongoDB image
+FROM mongo:7.0
+
+# Install bash and wget for the wait-for-it script
+RUN apt-get update && apt-get install -y bash wget
+
+RUN mkdir -p /data/configdb 
+
+# Copia o arquivo mongo-keyfile do host para o contêiner
+COPY .key/mongo-keyfile /data/configdb/mongo-keyfile
+
+# Ajusta o dono da chave para o MongoDB
+RUN chmod 600 /data/configdb/mongo-keyfile
+RUN chown mongodb:mongodb /data/configdb/mongo-keyfile
+
+
+
+# Copy the wait-for-it script into the container
+COPY ./scripts/wait-for-it.sh /wait-for-it.sh
+
+# Make sure the wait-for-it script is executable
+RUN chmod +x /wait-for-it.sh
+
+# Copy the replica set initialization script into the container
+COPY ./scripts/init-replica-set.js /docker-entrypoint-initdb.d/
+
+# Set the entrypoint to run MongoDB with a replica set and wait for the other members
+CMD bash -c "/wait-for-it.sh mongo2:27018 --timeout=60 -- /wait-for-it.sh mongo3:27019 --timeout=60 -- mongod --replSet rs0 --bind_ip_all --port 27017 --keyFile /data/configdb/mongo-keyfile"

@@ -1,0 +1,9 @@
+{
+  "additionalFiles": "",
+  "compiler.optimization_flags": "",
+  "customBuildProperties": "",
+  "fqbn": "arduino:avr:uno",
+  "hardwareFolders": "/Users/fernandoferminiano/Library/Arduino15/packages",
+  "otherLibrariesFolders": "/Users/fernandoferminiano/Documents/Arduino/libraries",
+  "sketchLocation": "/Users/fernandoferminiano/projetos/study/arduino/lamps"
+}
